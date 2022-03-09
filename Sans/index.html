@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SANS Test</title>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Title
+         Release Date
+         Rating-->
+    <label>Title: </label>
+    <input type="text" id="title" name="title" autocomplete="off" maxlength="200" onkeyup="isInputValid()"/><br />
+    <label>Release Date: </label>
+    <input type="date" id="releaseDate" name="releaseDate" autocomplete="off" max="2015-10-01" onkeyup="isInputValid()"/><br />
+    <label>Rating: </label>
+    <input type="number" id="rating" name="rating" min ="1" max="5" onkeyup="isInputValid()"/><br />
+    <input type="submit" value="Add Movie" id="submit" disabled>
+
+    <script>
+        function isInputValid() {
+            let title = document.getElementById('title').value;
+            let releaseDate = document.getElementById('releaseDate').value;
+            let rating = document.getElementById('rating').value;
+
+            if (title != "" && releaseDate != "" && rating != "") {
+                if (releaseDate.length == 10 && rating > 0 && rating < 6) {
+                    console.log('releasedate ' + releaseDate);
+                    let tempDate = new Date('2015-01-10');
+                    let dt = new Date(releaseDate);
+                    console.log('tempdate ' + tempDate);
+                    console.log('date ' + dt);
+                    if (dt >= tempDate) {
+                        console.log("enable button");
+                        document.getElementById('submit').removeAttribute('disabled');
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
